@@ -2,4 +2,4 @@
 
 爬取的网站是一个[种子库](http://www.sugarfh.vip)，里面有成千上万的种子。
 <br />
-![人不好色好什么？how are you 吗](https://c-ssl.duitang.com/uploads/item/202008/11/20200811005930_YcBch.jpeg)
+![人不好色好什么？how are you 吗](人不好色好什么.jpeg)
