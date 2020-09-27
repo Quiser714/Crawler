@@ -12,8 +12,8 @@ class SpyForMagnet:
         super().__init__()
         self.mainPage = r'https://www.sugarfh.vip/page/'
         self.pageNum = 1
-
-        self.TextFile = open('MagnetListFile.txt', 'w', encoding='utf8')
+        
+        self.TextFile = None
         print('{:20}'.format('番号'), "磁力链", file=self.TextFile)
         self.TextLock = threading.Lock()
 
@@ -30,10 +30,12 @@ class SpyForMagnet:
     def getItemHref(self, html) -> list:  # 返回主页某一页中嵌入的网页列表
         HrefList = []
         articles = html.find_all('article')
-        for article in articles:
-            href = article.find_all(
-                'a', attrs={'class': 'wp-post-image-link'})[0]['href']
-            HrefList.append(href)
+        
+        if len(articles) != 0:
+            for article in articles:
+                href = article.find_all(
+                    'a', attrs={'class': 'wp-post-image-link'})[0]['href']
+                HrefList.append(href)
         return HrefList
 
     def getMagnet(self, html) -> str:  # 返回页面包含的磁力链
@@ -63,6 +65,7 @@ class SpyForMagnet:
         self.TextLock.release()
 
     def run(self):
+        self.TextFile = open('MagnetListFile.txt', 'w', encoding='utf8')
         while self.pageNum < 326:
             if threading.activeCount() == 1:
                 for i in range(20):
