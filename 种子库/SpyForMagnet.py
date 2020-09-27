@@ -49,7 +49,6 @@ class SpyForMagnet:
             return magnet
         else:
             print('No Magnet Found!')
-            print(magnet)
             return 'none'
 
     def getOnePage_ForOneThread(self, pageNum):
