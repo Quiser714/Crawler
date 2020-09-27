@@ -31,10 +31,22 @@ th.join()
 import time
 import threading
 
+# 方法一
 def sayHello(objectName):
   print('Hello',objectName)
+  
+threading.Thread(target = sayHello, ('World',)).start()
 
-# 方法一
-threading.Thread(target = sayHello, ('World',))
+#方法二
+class MyThread(threading.Thread):
+  def __init__(self, objName):
+    super().__init__()
+    self.objName = objName
+    
+  def run(self):
+    print('Hello', self.objName)
+
+myth = Mythread('World')
+myth.start()
 
 ```
